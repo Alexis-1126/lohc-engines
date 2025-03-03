@@ -181,12 +181,12 @@ nav.navbar.bootsnav {
     /* color: #1b1e20; */
     /* font-size: 20px;
     font-weight: 700; */
-    padding: 15px 15px;
+    padding: 1px 15px;
     /* text-transform:capitalize; */
 }
 .navbar-header a.navbar-brand span{display: inline-block;color:#084c61;text-transform:capitalize;}
 .navbar-brand img {
-    height: 60px;
+    height: 85px;
 }
 
 /* .wrap-sticky nav.navbar.bootsnav.sticked .navbar-header a.navbar-brand,.wrap-sticky nav.navbar.bootsnav.sticked .navbar-header a.navbar-brand:hover,.wrap-sticky nav.navbar.bootsnav.sticked .navbar-header a.navbar-brand:focus {
