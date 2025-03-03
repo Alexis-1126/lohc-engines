@@ -695,7 +695,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #084c61;}
     background:url(../../assets/images/counter/counter-banner.jpg)no-repeat fixed;
     background-position:center;
     background-size:cover;
-    padding:127px 0 120px;
+    padding:77px 0 77px;
 }
 .statistics:before{
     position:absolute;
@@ -705,6 +705,12 @@ nav.navbar.bootsnav .navbar-toggle i{color: #084c61;}
     width:100%;
     top:0;
     left:0;
+}
+.statistics-counter h1{
+    color:#fff;
+    position: relative;
+    text-align: center;
+    padding-bottom:50px;
 }
 /* single-ststistics-box */
 .single-ststistics-box {
