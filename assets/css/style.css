@@ -592,6 +592,32 @@ nav.navbar.bootsnav .navbar-toggle i{color: #084c61;}
 .single-explore-txt.bg-theme-2 .explore-map-icon a svg:hover{color: #00c437;}
 .single-explore-item:hover{box-shadow: 0 10px 20px rgba(21,19,19,.2);}
 
+/*------------------------------------
+        8. Profiles
+-------------------------------------*/
+.about-us {
+    padding: 90px 0 90px;
+}
+
+/*profile-content*/
+.profile-content {
+    margin-top: 36px;
+    align-items: center;
+}
+
+/*profile-card*/
+.profile-card {
+    max-width: 200px;
+    margin: auto;
+    text-align: center;
+}
+
+/*profile-title*/
+.profile-title {
+    color:#767f86;
+    font-size: 16px;
+}
+
 /*-------------------------------------
         8. Reviews
 --------------------------------------*/
