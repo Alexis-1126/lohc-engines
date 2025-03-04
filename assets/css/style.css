@@ -67,6 +67,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 p {
 	margin: 0;
+    margin-bottom: 24px;
 	color:#767f86;
 	font-size:14px;
     line-height: 1.8;
@@ -399,6 +400,9 @@ nav.navbar.bootsnav .navbar-toggle i{color: #084c61;}
 .works{padding: 0 0 90px;}
 .works-content {margin-top: 73px;}
 
+.works-img img{
+    width: 800px;
+}
 .single-how-works{
     text-align: center;
     padding:50px 42px;
