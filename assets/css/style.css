@@ -110,6 +110,7 @@ html,body{height: 100%;}
     letter-spacing: 1.3px;
 }
 .section-header h2 span{text-transform: lowercase;}
+.section-header h3{text-align: left;}
 .section-header p{
     font-size:16px;
     text-align: left;
@@ -767,10 +768,11 @@ nav.navbar.bootsnav .navbar-toggle i{color: #084c61;}
 }
 
 /*-------------------------------------
-        10. Blog
+        10. News & Articles
 --------------------------------------*/
 .blog{padding:120px 0 90px;}
-.blog-content{margin-top: 80px;}
+.blog-content{margin-top: 24px;}
+.article-content{margin-top: 24px;}
 
 .single-blog-item{
     margin-bottom: 30px;
@@ -782,6 +784,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #084c61;}
     transition: .3s;
 }
 .single-blog-item-txt {padding:  25px 28px 27px;}
+.single-article-item-txt {padding: 10px 13px 12px;}
 .single-blog-item-txt h2 a {text-transform:  initial;line-height: 1.8;}
 .single-blog-item-txt h4 {
     font-size:  14px;
@@ -797,11 +800,25 @@ nav.navbar.bootsnav .navbar-toggle i{color: #084c61;}
     text-transform: uppercase;
 }
 
+.single-article-item-txt h2 a {text-transform:  initial;line-height: 1.8;}
+.single-article-item-txt h4 {
+    font-size:  14px;
+    color:  #8f949d;
+    font-weight:  400;
+    margin: 12px 0 12px;
+}
+.single-article-item-txt h4 a {
+    font-size:  14px;
+    padding-right:  14px;
+    border-right: 1px solid #dde0e4;
+    margin-right:  15px;
+    text-transform: uppercase;
+}
+
 .single-blog-item:hover h2 a {color:#084c61;}
 .single-blog-item:hover{
     box-shadow: 0 10px 20px rgba(21,19,19,.4);
 }
-
 
 /*-------------------------------------
         11. Subscribe
