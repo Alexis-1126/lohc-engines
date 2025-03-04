@@ -612,6 +612,10 @@ nav.navbar.bootsnav .navbar-toggle i{color: #084c61;}
     text-align: center;
 }
 
+.profile-card img{
+    padding-bottom: 20px;
+}
+
 /*profile-title*/
 .profile-title {
     color:#767f86;
