@@ -54,6 +54,7 @@
 	.welcome-hero-form {width: 100%;flex-direction: column;height: 250px;background: transparent;}
 
 	.list-topics-content {top: 0;margin: 60px auto;}
+	ul.list-topics-content-list{display: inline-block;}
 
 	.single-how-works,.single-blog-item {max-width: 350px;margin: 30px auto;}
 
@@ -94,6 +95,7 @@
 
 @media screen and (max-width: 480px){
 	.subscription-input-group .subscription-input-form {width: 300px;}
+
 }/*max-width:480px*/
 
 @media screen and (max-width: 440px){
