@@ -886,9 +886,9 @@ nav.navbar.bootsnav .navbar-toggle i{color: #084c61;}
 
 /*appsLand-btn*/
 .appsLand-btn {
-    position: absolute;
+    /* position: absolute;
     top: 0;
-    right: 0;
+    right: 0; */
     background: #084c61;
     display: inline-block;
     width: 180px;
