@@ -185,10 +185,20 @@
             position: relative;
             overflow: hidden; /* Contains the cloud */
         }
-        
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            align-items: center;
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
         .hero-content {
             position: relative;
             z-index: 2;
+
         }
 
         .hero h1 {
@@ -221,6 +231,19 @@
             opacity: 1;
             pointer-events: none;
             animation: driftCloud 60s infinite linear alternate;
+        }
+
+        .hero-video-wrapper {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden; /* Important for keeping the video contained */
+            aspect-ratio: 4 / 3; /* Maintain a consistent aspect ratio */
+        }
+        
+        .hero-truck-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the video covers the container */
         }
 
         @keyframes driftCloud {
@@ -460,6 +483,25 @@
         
         /* --- Responsive Design --- */
         @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .hero-content {
+                text-align: center;
+            }
+            .hero h1 {
+                margin: 0 auto;
+            }
+            .hero p {
+                margin: 1.5rem auto 2.5rem;
+            }
+            .hero-video-wrapper {
+                order: 1; /* Video on top on mobile */
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
             .numbered-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -555,12 +597,17 @@
         <section class="hero">
             <img src="assets/images/welcome-hero/Energy Waveform.png" alt="Energy Waveform" class="hero-background-image">
             <div class="container">
-                <div class="hero-content">
-                    <h1>We make hydrogen <span class="highlight">better</span></h1>
-                    <p>
-                        Our solution unlocks a new way to move and use hydrogen—safely, affordably, and at scale. At LNK Energies, we help power the future without compromising on performance or cost.
-                    </p>
-                    <a href="#contact" class="cta-button">Contact Us</a>
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <h1>We make hydrogen <span class="highlight">better</span></h1>
+                        <p>
+                            Our solution unlocks a new way to move and use hydrogen—safely, affordably, and at scale. At LNK Energies, we help power the future without compromising on performance or cost.
+                        </p>
+                        <a href="#contact" class="cta-button">Contact Us</a>
+                    </div>
+                    <div class="hero-video-wrapper">
+                        <video src="assets/video/Website Transportation Video.mp4" autoplay loop muted playsinline class="hero-truck-video"></video>
+                    </div>
                 </div>
             </div>
         </section>
