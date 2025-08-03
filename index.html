@@ -524,6 +524,8 @@
             }
             .hero-content {
                 text-align: center;
+                order: 2; /* 2. Make text appear first */
+                padding: 4rem 0 0; /* Adjust padding */
             }
             .hero h1 {
                 margin: 0 auto;
@@ -533,8 +535,14 @@
             }
             .hero-video-wrapper {
                 order: 1; /* Video on top on mobile */
-                max-width: 500px;
+                width: 100%;
+                height: 300px;
                 margin: 0 auto;
+                clip-path: none;
+            }
+
+            .hero-background-image {
+                height: 100%;
             }
             
             .numbered-grid {
@@ -733,7 +741,7 @@
                 <div class="ticker">
                     <!-- List logos twice for a seamless loop -->
                     <div class="ticker-item"><a href="https://news.mit.edu/2023/harnessing-hydrogens-potential-address-long-haul-trucking-emissions-0907" target="_blank" rel="noopener noreferrer">
-                        <img src="assets/images/icons/MIT_News_logo.png" alt="MIT News"></a></div>
+                        <img src="assets/images/icons/MIT_News_Logo.png" alt="MIT News"></a></div>
                     <div class="ticker-item"><a href="https://protoventures.mit.edu/hyrdrogen-fellows/" target="_blank" rel="noopener noreferrer">
                         <img src="assets/images/icons/ProtoVentures.png" alt="ProtoVentures Fellowship"></a></div>
                     <div class="ticker-item">
