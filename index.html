@@ -74,6 +74,11 @@
             z-index: 100;
         }
 
+        .main-container {
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
         .main-nav {
             display: flex;
             justify-content: space-between;
@@ -183,7 +188,7 @@
         .hero {
             padding: 0 0;
             position: relative;
-            /* overflow: hidden; Contains the cloud */
+            overflow: hidden; /*Contains the cloud */
             min-height: 80vh; /* Give the section enough height */
             display: flex;
             align-items: top;
@@ -299,7 +304,10 @@
         /* --- Numbered Sections --- */
         .numbered-section {
             padding: 8rem 0;
+            background-color: #f9f9f9;
         }
+
+
 
         .numbered-grid {
             display: grid;
@@ -315,12 +323,12 @@
         .section-number {
             font-size: 10rem;
             font-weight: 700;
-            color: #f0f0f0;
+            color: rgba(0, 0, 0, 0.1);
             position: absolute;
             top: 50%;
             left: -2rem;
             transform: translateY(-60%);
-            z-index: -1;
+            z-index: 0;
             line-height: 1;
             user-select: none;
         }
@@ -329,6 +337,8 @@
             font-size: 2.5rem;
             font-weight: 700;
             padding-left: 1rem;
+            z-index: 2;
+            position: relative;
         }
 
         .section-content p {
@@ -450,6 +460,12 @@
             height: 50px;
             filter: grayscale(100%);
             opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .ticker-item:hover img {
+            transform: scale(1.1);
+            opacity: 0.9;
         }
         
         /* --- CTA Section --- */
@@ -582,7 +598,7 @@
 
     <!-- Header -->
     <header class="main-header">
-        <div class="container">
+        <div class="main-container">
             <nav class="main-nav">
                 <a href="#" class="logo">
                     <!-- Make sure 'LNK Energies.png' is in the same folder as this HTML file -->
@@ -716,15 +732,14 @@
             <div class="ticker-wrap">
                 <div class="ticker">
                     <!-- List logos twice for a seamless loop -->
-                    <div class="ticker-item"><img src="assets/images/icons/MIT_News_logo.png" alt="MIT News"></div>
-                    <div class="ticker-item"><img src="assets/images/icons/ProtoVentures.png" alt="ProtoVentures Fellowship"></div>
-                    <div class="ticker-item"><img src="assets/images/icons/MIT DeltaV.png" alt="DeltaV"></div>
-                    <div class="ticker-item"><img src="assets/images/icons/776 Fellowship.png" alt="776 Fellowship"></div>
-                    
-                    <div class="ticker-item"><img src="assets/images/icons/MIT_News_logo.png" alt="MIT News"></div>
-                    <div class="ticker-item"><img src="assets/images/icons/ProtoVentures.png" alt="ProtoVentures Fellowship"></div>
-                    <div class="ticker-item"><img src="assets/images/icons/MIT DeltaV.png" alt="DeltaV"></div>
-                    <div class="ticker-item"><img src="assets/images/icons/776 Fellowship.png" alt="776 Fellowship"></div>
+                    <div class="ticker-item"><a href="https://news.mit.edu/2023/harnessing-hydrogens-potential-address-long-haul-trucking-emissions-0907" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/images/icons/MIT_News_logo.png" alt="MIT News"></a></div>
+                    <div class="ticker-item"><a href="https://protoventures.mit.edu/hyrdrogen-fellows/" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/images/icons/ProtoVentures.png" alt="ProtoVentures Fellowship"></a></div>
+                    <div class="ticker-item">
+                        <img src="assets/images/icons/MIT DeltaV.png" alt="DeltaV"></div>
+                    <div class="ticker-item"><a href="https://776.org/fellows" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/images/icons/776 Fellowship.png" alt="776 Fellowship"></a></div>
                 </div>
             </div>
         </section>
@@ -772,6 +787,16 @@
         navLinks.forEach(link => {
             link.addEventListener('click', closeNav);
         });
+
+        // --- Ticker Clone Script for Seamless Loop ---
+        const ticker = document.querySelector('.ticker');
+        if (ticker) {
+            const tickerItems = Array.from(ticker.children);
+            tickerItems.forEach(item => {
+                const clone = item.cloneNode(true);
+                ticker.appendChild(clone);
+            });
+        }
     </script>
 
 </body>
