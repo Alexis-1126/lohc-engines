@@ -416,7 +416,7 @@
 
         .video-toggle {
             flex: 1;
-            padding: 1.25rem;
+            padding: 0.5rem 1.25rem;
             cursor: pointer;
             position: relative;
             text-align: left;
@@ -444,7 +444,7 @@
         }
         
         .video-captions {
-            padding: 1.25rem;
+            padding: 0.5rem 1.25rem;
             border-bottom: 1px solid var(--border-color);
             margin-top: -1px; /* Overlap the toggle border */
         }
@@ -841,7 +841,7 @@
                             </div>
                         </div>
                         <div class="video-captions">
-                            <p class="video-caption active" data-caption="1">Locking hydrogen into LOHC.</p>
+                            <p class="video-caption active" data-caption="1">Locking hydrogen into LOHC</p>
                             <p class="video-caption" data-caption="2">Fuel can use the same pipelines as diesel.</p>
                         </div>
                     </div>
@@ -855,11 +855,31 @@
                 <div class="numbered-grid">
                     <div class="section-number-wrapper">
                         <span class="section-number">03</span>
-                        <h2 class="section-title-numbered">The Key:</h2>
+                        <div class="section-title-numbered">
+                            <h1>The Key</h1>
+                            <h2>Our technology</h2>
+                        </div>
+                        <div class="section-content">
+                            <p>Our technology is the key to extracting hydrogen from LOHCs—safely and efficiently, right on board. Whether in a truck, ship, or other heavy-duty platform, the hydrogen can then power a hydrogen engine or fuel cell, enabling a practical and cost-effective path to zero emissions.</p>
+                        </div>
                     </div>
-                    <div class="section-content">
-                        <h1>Using LOHCs as fuel</h1>
-                        <p>Our technology is the key to extracting hydrogen from LOHCs—safely and efficiently, right on board. Whether in a truck, ship, or other heavy-duty platform, the hydrogen can then power a hydrogen engine or fuel cell, enabling a practical and cost-effective path to zero emissions.</p>
+                    <div class="media-carousel">
+                        <div class="videos-container">
+                            <video src="assets/video/Engine Power.mp4" autoplay loop muted playsinline class="section-video active" data-video="1"></video>
+                            <video src="assets/video/Fuel Cell.mp4" autoplay loop muted playsinline class="section-video" data-video="2"></video>
+                        </div>
+                        <div class="video-toggles">
+                            <div class="video-toggle active" data-toggle="1">
+                                <h4>Engine</h4>
+                            </div>
+                            <div class="video-toggle" data-toggle="2">
+                                <h4>Fuel Cell</h4>
+                            </div>
+                        </div>
+                        <div class="video-captions">
+                            <p class="video-caption active" data-caption="1">We can extract hydrogen at optimal pressures and flow rates to power a hydrogen internal combustion engine.</p>
+                            <p class="video-caption" data-caption="2">We can extract hydrogen to power a hydrogen fuel cell for complete electric operation.</p>
+                        </div>
                     </div>
                 </div>
             </div>
