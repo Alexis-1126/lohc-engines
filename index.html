@@ -64,7 +64,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
         }
@@ -319,14 +319,17 @@
         /* --- Numbered Sections --- */
         .numbered-section {
             padding: 8rem 0;
+            background-color: #ffffff;
+        }
+
+        .numbered-section-bg {
+            padding: 8rem 0;
             background-color: #f9f9f9;
         }
 
-
-
         .numbered-grid {
             display: grid;
-            grid-template-columns: 1fr 2fr;
+            grid-template-columns: 1.5fr 1fr;
             gap: 4rem;
             align-items: center;
         }
@@ -338,9 +341,9 @@
         .section-number {
             font-size: 10rem;
             font-weight: 700;
-            color: rgba(0, 0, 0, 0.1);
+            color: rgba(0, 0, 0, 0.05);
             position: absolute;
-            top: 50%;
+            top: 8%;
             left: -2rem;
             transform: translateY(-60%);
             z-index: 0;
@@ -348,8 +351,17 @@
             user-select: none;
         }
 
-        .section-title-numbered {
+        .section-title-numbered h1 {
             font-size: 2.5rem;
+            font-weight: 700;
+            padding-left: 1rem;
+            padding-bottom: 1rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .section-title-numbered h2 {
+            font-size: 1.5rem;
             font-weight: 700;
             padding-left: 1rem;
             z-index: 2;
@@ -361,8 +373,92 @@
             color: var(--secondary-gray);
             max-width: 550px;
             line-height: 1.7;
+            padding-left: 1rem;
+        }
+
+        .section-media-wrapper {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+        }
+
+        /* --- Video Carousel Styles --- */
+        .videos-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .section-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .section-video.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .video-toggles {
+            display: flex;
+            margin-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .video-toggle {
+            flex: 1;
+            padding: 1.25rem;
+            cursor: pointer;
+            position: relative;
+            text-align: left;
         }
         
+        .video-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-toggle.active::before {
+            opacity: 1;
+        }
+        
+        .video-toggle h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        
+        .video-captions {
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+            margin-top: -1px; /* Overlap the toggle border */
+        }
+
+        .video-caption {
+            font-size: 1rem;
+            color: var(--secondary-gray);
+            display: none; /* Hide all captions by default */
+        }
+
+        .video-caption.active {
+            display: block; /* Show only the active caption */
+        }
+
         /* --- NEW: Recent Updates Section --- */
         .updates-section {
             padding: 8rem 0;
@@ -627,6 +723,9 @@
             .numbered-section {
                 padding: 5rem 0;
             }
+            .numbered-section-bg {
+                padding: 5rem 0;
+            }
             .updates-list li a {
                 grid-template-columns: 1fr;
                 gap: 0.5rem;
@@ -699,12 +798,12 @@
         </section>
 
         <!-- Numbered Section 01 -->
-        <section class="numbered-section" id="section-1">
+        <section class="numbered-section-bg" id="section-1">
             <div class="container">
                 <div class="numbered-grid">
                     <div class="section-number-wrapper">
                         <span class="section-number">01</span>
-                        <h2 class="section-title-numbered">The Problem:</h2>
+                        <h2 class="section-title-numbered">The Problem</h2>
                     </div>
                     <div class="section-content">
                         <h1>Hydrogen has not worked</h1>
@@ -720,11 +819,31 @@
                 <div class="numbered-grid">
                     <div class="section-number-wrapper">
                         <span class="section-number">02</span>
-                        <h2 class="section-title-numbered">The Solution:</h2>
+                        <div class="section-title-numbered">
+                            <h1>The Solution</h1>
+                            <h2>A safer, easier hydrogen fuel</h2>
+                        </div>
+                        <div class="section-content">
+                            <p>We use Liquid Organic Hydrogen Carriers (LOHCs) that safely locks hydrogen into a stable, room-temperature liquid. It's non-flammable, easy to handle, and compatible with existing diesel infrastructure—making hydrogen as practical and cost-effective as today’s fuels.</p>
+                        </div>
                     </div>
-                    <div class="section-content">
-                        <h1>A safer, easier hydrogen fuel</h1>
-                        <p>We use Liquid Organic Hydrogen Carriers (LOHCs) that safely locks hydrogen into a stable, room-temperature liquid. It's non-flammable, easy to handle, and compatible with existing diesel infrastructure—making hydrogen as practical and cost-effective as today’s fuels.</p>
+                    <div class="media-carousel">
+                        <div class="videos-container">
+                            <video src="assets/video/Hydrogenation.mp4" autoplay loop muted playsinline class="section-video active" data-video="1"></video>
+                            <video src="assets/video/Pipeline.mp4" autoplay loop muted playsinline class="section-video" data-video="2"></video>
+                        </div>
+                        <div class="video-toggles">
+                            <div class="video-toggle active" data-toggle="1">
+                                <h4>Hydrogenation</h4>
+                            </div>
+                            <div class="video-toggle" data-toggle="2">
+                                <h4>Transportation</h4>
+                            </div>
+                        </div>
+                        <div class="video-captions">
+                            <p class="video-caption active" data-caption="1">Locking hydrogen into LOHC.</p>
+                            <p class="video-caption" data-caption="2">Fuel can use the same pipelines as diesel.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -849,6 +968,32 @@
             });
         }
 
+        // --- Video Carousel Script ---
+        const carousels = document.querySelectorAll('.media-carousel');
+        carousels.forEach(carousel => {
+            const toggles = carousel.querySelectorAll('.video-toggle');
+            const videos = carousel.querySelectorAll('.section-video');
+            const captions = carousel.querySelectorAll('.video-caption');
+
+            toggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const toggleId = toggle.dataset.toggle;
+
+                    // Deactivate all items in this carousel
+                    toggles.forEach(t => t.classList.remove('active'));
+                    videos.forEach(v => v.classList.remove('active'));
+                    captions.forEach(c => c.classList.remove('active'));
+
+                    // Activate the clicked toggle and corresponding video/caption
+                    toggle.classList.add('active');
+                    const targetVideo = carousel.querySelector(`.section-video[data-video="${toggleId}"]`);
+                    const targetCaption = carousel.querySelector(`.video-caption[data-caption="${toggleId}"]`);
+                    
+                    if (targetVideo) targetVideo.classList.add('active');
+                    if (targetCaption) targetCaption.classList.add('active');
+                });
+            });
+        });
     </script>
 
 </body>
