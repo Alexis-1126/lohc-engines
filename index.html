@@ -437,13 +437,18 @@
         .video-toggle h4 {
             font-size: 1.1rem;
             font-weight: 700;
-            color: rgba(0, 0, 0, 0.1); /* This makes it gray by default */
-            }
+            color: rgba(0,0,0,0.3); /* This makes it gray by default */
+            transition: color 0.3s ease;
+        }
 
         .video-toggle.active h4 {
             color: var(--primary-dark); /* This makes the active one dark */
         }
         
+        .video-toggle:hover h4 {
+            color: var(--secondary-gray);
+        }
+
         .video-captions {
             padding: 0.5rem 1.25rem;
             border-bottom: 1px solid var(--border-color);
@@ -779,7 +784,7 @@
                     </div>
                 </div>
                 <div class="hero-video-wrapper">
-                    <video src="assets/video/Website Transportation Video.mp4" autoplay loop muted playsinline class="hero-truck-video"></video>
+                    <video src="assets/video/Website Transportation Video.mp4" autoplay loop muted playsinline class="hero-truck-video" poster="assets/images/welcome-hero/Website Video First Frame.png"></video>
                 </div>
             </div>
         </section>
@@ -862,10 +867,10 @@
                             <h2>Our technology</h2>
                         </div>
                         <div class="section-content">
-                            <p>Our Hydrogen Release Unit is the key to extracting hydrogen from LOHCs—safely and efficiently, right on board. Whether in a truck, ship, or other heavy-duty platform, our technology enables a practical and cost-effective path to zero emissions.</p>
+                            <p>Our Hydrogen Release Unit (HRU) is the key to extracting hydrogen from LOHCs—safely and efficiently, right on board. Whether in a truck, ship, or other heavy-duty platform, our technology enables a practical and cost-effective path to zero emissions.</p>
                         </div>
                     </div>
-                    <div class="media-carousel">
+                    <div class="media-carousel" style="min-height:465px">
                         <div class="videos-container">
                             <video src="assets/video/Our Technology.mp4" autoplay loop muted playsinline class="section-video active" data-video="1"></video>
                             <video src="assets/video/Engine Power.mp4" autoplay loop muted playsinline class="section-video" data-video="2"></video>
@@ -873,7 +878,7 @@
                         </div>
                         <div class="video-toggles">
                             <div class="video-toggle active" data-toggle="1">
-                                <h4>Hydrogen Release Unit</h4>
+                                <h4>HRU</h4>
                             </div>
                             <div class="video-toggle" data-toggle="2">
                                 <h4>Engine</h4>
