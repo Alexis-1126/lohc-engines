@@ -437,6 +437,11 @@
         .video-toggle h4 {
             font-size: 1.1rem;
             font-weight: 700;
+            color: rgba(0, 0, 0, 0.1); /* This makes it gray by default */
+            }
+
+        .video-toggle.active h4 {
+            color: var(--primary-dark); /* This makes the active one dark */
         }
         
         .video-captions {
