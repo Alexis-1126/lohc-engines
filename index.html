@@ -13,17 +13,24 @@
     <link rel="shortcut icon" type="image/icon" href="assets/images/icons/LNK Favicon.png"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* --- CSS Reset & Basic Setup --- */
+        /* --- CSS Reset & Modern Setup --- */
         :root {
-            --primary-dark: #1a1a1a;
-            --secondary-gray: #555;
+            /* Updated to a more modern slate/tech palette while keeping your accents */
+            --primary-dark: #0f172a; 
+            --secondary-gray: #64748b;
+            --background-page: #f8fafc; /* Very light slate for depth */
             --background-light: #ffffff;
-            --border-color: #f0f0f0;
+            --border-color: #e2e8f0;
             --gradient: linear-gradient(135deg, #f1dd76 0%, #62bfd4 100%);
             --accent-yellow: #f1dd76;
             --accent-blue: #62bfd4;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            --radius-md: 12px;
+            --radius-lg: 24px;
         }
 
         * {
@@ -38,7 +45,7 @@
 
         body {
             font-family: 'Manrope', sans-serif;
-            background-color: var(--background-light);
+            background-color: var(--background-page);
             color: var(--primary-dark);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
@@ -49,6 +56,11 @@
         
         body.no-scroll {
             overflow: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            letter-spacing: -0.02em;
+            line-height: 1.2;
         }
         
         /* --- Custom Scrollbar --- */
@@ -64,25 +76,27 @@
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
         /* --- Header & Navigation --- */
         .main-header {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid var(--border-color);
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
             z-index: 100;
+            transition: all 0.3s ease;
         }
 
         .main-container {
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 4rem;
+            /*max-width: 1400px;*/
         }
 
         .main-nav {
@@ -92,15 +106,48 @@
         }
 
         .logo img {
-            height: 50px;
+            height: 40px;
             display: block;
         }
         
+        /* --- Desktop Navigation --- */
+        .desktop-nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .desktop-nav-links a {
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .desktop-nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .desktop-nav-links .nav-cta {
+            background-color: var(--primary-dark);
+            color: var(--background-light);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+        }
+
+        .desktop-nav-links .nav-cta:hover {
+            background-color: var(--accent-blue);
+            color: var(--background-light);
+            transform: translateY(-2px);
+        }
+
         /* --- Hamburger Menu --- */
         .hamburger-menu {
-            width: 30px;
-            height: 22px;
-            display: flex;
+            width: 32px;
+            height: 20px;
+            display: none;
             flex-direction: column;
             justify-content: space-between;
             cursor: pointer;
@@ -109,29 +156,29 @@
         
         .hamburger-menu .bar {
             width: 100%;
-            height: 2.5px;
-            background-color: var(--secondary-gray);
+            height: 2px;
+            background-color: var(--primary-dark);
             border-radius: 2px;
             transition: all 0.3s ease;
         }
 
-        .hamburger-menu:hover .bar{
-            background-color: transparent;
-            background-image: var(--gradient);
+        .hamburger-menu:hover .bar {
+            background-color: var(--accent-blue);
         }
         
         /* --- Sidebar Navigation --- */
         .sidebar-nav {
             position: fixed;
             top: 0;
-            right: -350px; /* Start off-screen */
-            width: 300px; /* Sidebar width */
+            right: -400px;
+            width: 350px;
+            max-width: 100vw;
             height: 100vh;
             background-color: var(--background-light);
             z-index: 101;
-            padding: 6rem 2rem 2rem;
-            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            padding: 6rem 3rem 3rem;
+            box-shadow: -10px 0 40px rgba(0,0,0,0.08);
+            transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
         }
         
         .sidebar-nav.active {
@@ -143,41 +190,44 @@
         }
         
         .sidebar-nav-links li {
-            margin: 2rem 0;
+            margin: 1.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .sidebar-nav-links li:last-child {
+            border-bottom: none;
         }
         
         .sidebar-nav-links a {
             text-decoration: none;
             color: var(--primary-dark);
-            font-size: 1.5rem;
-            font-weight: 500;
+            font-size: 1.25rem;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.3s ease, color 0.3s ease;
         }
 
         .sidebar-nav-links a:hover {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--accent-blue);
+            transform: translateX(5px);
         }
         
         .close-btn {
             position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-size: 2rem;
+            top: 2rem;
+            right: 2rem;
+            font-size: 2.5rem;
             font-weight: 300;
             cursor: pointer;
             color: var(--secondary-gray);
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.3s ease;
+            line-height: 1;
         }
 
         .close-btn:hover {
-        background: var(--gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
+            color: var(--primary-dark);
+            transform: rotate(90deg);
         }
         
         .nav-overlay {
@@ -186,7 +236,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.4);
+            background-color: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
             z-index: 100;
             opacity: 0;
             visibility: hidden;
@@ -198,56 +249,53 @@
             visibility: visible;
         }
 
-
         /* --- Hero Section --- */
         .hero {
-            padding: 0 0;
             position: relative;
-            overflow: hidden; /*Contains the cloud */
-            min-height: 80vh; /* Give the section enough height */
+            overflow: hidden; 
+            min-height: 75vh; 
             display: flex;
-            align-items: top;
-            border-bottom: 1px solid var(--border-color);
+            background: var(--background-light);
         }
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.25fr 1fr;
+            grid-template-columns: 1.1fr 1fr;
             align-items: center;
-            gap: 2rem;
+            gap: 4rem;
             position: relative;
             z-index: 2;
             width: 100%;
+            margin: 0 auto;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 8rem 2rem;
+            padding: 4rem 2rem 4rem 4rem;
         }
 
         .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            line-height: 1.1;
-            max-width: 600px;
+            font-size: 4.5rem;
+            font-weight: 800;
+            max-width: 650px;
+            color: var(--primary-dark);
         }
         
         .hero .highlight {
             font-style: italic;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
             font-size: 1.25rem;
-            color: var(--primary-dark);
+            color: var(--secondary-gray);
             max-width: 500px;
             margin: 1.5rem 0 2.5rem;
+            font-weight: 400;
         }
         
         .hero-background-image {
@@ -259,68 +307,123 @@
             min-width: 1400px;
             transform: translate(-50%, -50%);
             z-index: 1;
-            opacity: 1;
+            opacity: 0.8; /* softened */
             pointer-events: none;
             animation: driftCloud 60s infinite linear alternate;
         }
 
         .hero-video-wrapper {
-            /* width: 100%;
-            border-radius: 16px;
-            overflow: hidden; /* Important for keeping the video contained */
-            /* aspect-ratio: 4 / 3; Maintain a consistent aspect ratio */
-
             position: absolute;
             top: 0;
-            right: 20px;
-            width: 50%; /* Adjust width as needed */
-            height: 100%; /* Cover the full height of the hero section */
+            right: 0;
+            width: 60%; 
+            height: 100%; 
             z-index: 1;
-            /* This creates the slanted cut */
-            clip-path: polygon(25% 0, 100% 0, 75% 100%, 0% 100%);
+            clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+            box-shadow: var(--shadow-lg);
         }
         
         .hero-truck-video {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures the video covers the container */
+            object-fit: cover; 
+            background: #cbd5e1; /* fallback color */
         }
 
         @keyframes driftCloud {
-            from {
-                transform: translate(-55%, -50%);
-            }
-            to {
-                transform: translate(-45%, -50%);
-            }
+            from { transform: translate(-55%, -50%); }
+            to { transform: translate(-45%, -50%); }
         }
         
-        /* --- UPDATED Simple CTA Button --- */
+        /* --- Global Button Styles --- */
         .cta-button {
-            display: inline-block;
-            padding: .5rem 1.5rem;
-            border-radius: 8px;
-            background-color: var(--accent-blue); /* Solid blue background */
-            color: var(--background-light); /* White text */
-            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            border-radius: 50px; /* Modern Pill shape */
+            background-color: var(--primary-dark); 
+            color: var(--background-light);
+            font-size: 1.05rem;
             font-weight: 700;
             text-decoration: none;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            border: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid var(--primary-dark);
+            box-shadow: var(--shadow-md);
         }
         
         .cta-button:hover {
-            background-color: var(--accent-yellow); /* Yellow on hover */
-            color: var(--primary-dark); /* Dark text on hover for contrast */
+            background-color: var(--background-light); 
+            color: var(--primary-dark); 
             transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
         }
 
+        /* --- NEW: Emissions Stats Section --- */
+        .emissions-stats {
+            padding: 2rem 0;
+            background-color: var(--background-page);
+            border-bottom: 1px solid var(--border-color);
+        }
 
-        /* --- Numbered Sections --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .stat-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: rgba(98, 191, 212, 0.1); /* light accent blue */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue);
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1rem;
+            color: var(--secondary-gray);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .emissions-summary {
+            text-align: center;
+            margin: 0 4rem;
+            font-size: 1.35rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        /* --- Core Narrative Flow (Sections 01, 02, 03) --- */
+        .narrative-wrapper {
+            background: var(--background-light);
+            padding: 2rem 0;
+        }
+
         .numbered-section {
             padding: 8rem 0;
-            background-color: #ffffff;
+            background-color: transparent;
         }
 
         .numbered-grid {
@@ -330,7 +433,7 @@
             align-items: center;
         }
 
-        .section-number-wrapper {
+        .section-text-area {
             position: relative;
         }
 
@@ -347,36 +450,41 @@
             user-select: none;
         }
 
-        .section-title-numbered h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            padding-left: 1rem;
-            padding-bottom: 1rem;
-            z-index: 2;
+        .section-title-wrapper {
             position: relative;
+            z-index: 2;
+            margin-bottom: 2rem;
+            padding-left: 1rem;
         }
 
-        .section-title-numbered h2 {
-            font-size: 1.5rem;
+        .section-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--background-page);
+            color: var(--accent-blue);
             font-weight: 700;
-            padding-left: 1rem;
-            z-index: 2;
-            position: relative;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .section-title-wrapper h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
         }
 
         .section-content p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--secondary-gray);
             max-width: 550px;
-            line-height: 1.7;
+            line-height: 1.8;
+            position: relative;
+            z-index: 2;
             padding-left: 1rem;
-        }
-
-        .section-media-wrapper {
-            width: 100%;
-            border-radius: 12px;
-            overflow: hidden;
-            aspect-ratio: 1 / 1;
         }
 
         /* --- Video Carousel Styles --- */
@@ -465,104 +573,288 @@
             display: block; /* Show only the active caption */
         }
 
-        /* --- NEW: Recent Updates Section --- */
-        .updates-section {
-            padding: 8rem 0;
-            /*border-bottom: 1px solid var(--border-color);*/
+        /* --- NEW: The Team Section (Section 04) --- */
+        .team-section {
+            padding: 2rem 0;
+            background-color: var(--background-page);
         }
 
-        .updates-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: left;
+        .team-header {
+            text-align: center;
         }
 
-        .updates-list {
-            list-style: none;
+        .team-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+        }
+
+        .team-header p {
+            font-size: 1.2rem;
+            color: var(--secondary-gray);
+            max-width: 1300px;
             margin: 0 auto;
         }
 
-        .updates-list li a {
+        .team-grid {
             display: grid;
-            grid-template-columns: 150px 1fr auto;
-            gap: 1.5rem;
-            align-items: center;
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-            text-decoration: none;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .team-card {
+            /* background: var(--background-light);
+            border-radius: var(--radius-lg); */
+            padding: 2rem 2rem;
+            text-align: center;
+            /* box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color); */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+
+        }
+
+        .team-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: var(--border-color);
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
             color: var(--primary-dark);
-            transition: background-color 0.3s ease;
-            border-radius: 8px;
+            margin-bottom: 0.5rem;
         }
 
-        .updates-list li:first-child {
-            border-top: 1px solid var(--border-color);
+        .team-card p.role {
+            font-size: 1rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        .updates-list li a:hover {
-            background-color: #f9f9f9;
+        .team-card p.bio {
+            font-size: 0.95rem;
+            color: var(--secondary-gray);
+            line-height: 1.6;
+        }
+
+
+        /* --- UPDATED: Square Blog / Recent Updates Section --- */
+        .updates-section {
+            padding: 8rem 0;
+            background-color: var(--background-light);
+        }
+
+        .updates-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 4rem;
+        }
+
+        .updates-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 0; /* Adjusted to align with buttons */
+        }
+
+        /* NEW: Carousel Controls */
+        .carousel-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .carousel-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: var(--background-light);
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary-dark);
+            color: var(--background-light);
+            border-color: var(--primary-dark);
+        }
+
+        .blog-grid {
+            display: flex; /* Changed from grid to flex for horizontal scrolling */
+            gap: 2.5rem;
+            list-style: none;
+            overflow-x: auto; /* Enable horizontal scroll */
+            scroll-snap-type: x mandatory; /* Snap to cards */
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+            padding-bottom: 1.5rem; /* Space for hover shadows */
+        }
+
+        /* Hide the native scrollbar for a cleaner look */
+        .blog-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .blog-grid li {
+            flex: 0 0 calc(33.333% - 1.66rem); /* Show 3 cards on desktop */
+            min-width: 320px;
+            scroll-snap-align: start; /* Snap position */
+        }
+
+        .blog-card {
+            background: var(--background-light);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .blog-card a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* The "Square" Image Top */
+        .blog-image-wrapper {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background-color: var(--background-page);
+            position: relative;
+        }
+
+        .blog-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-card:hover .blog-image-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .blog-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .update-date {
-            color: var(--secondary-gray);
-            font-weight: 500;
+            color: var(--accent-blue);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .update-title {
             font-weight: 700;
-            font-size: 1.25rem;
+            font-size: 1.35rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
         }
 
-        .update-arrow {
-            font-size: 1.5rem;
+        .read-more {
+            margin-top: auto;
+            display: inline-flex;
+            align-items: center;
+            font-weight: 700;
+            color: var(--primary-dark);
+            transition: color 0.3s ease;
+        }
+
+        .read-more .arrow {
+            margin-left: 0.5rem;
             transition: transform 0.3s ease;
         }
 
-        .updates-list li a:hover .update-arrow {
+        .blog-card:hover .read-more {
+            color: var(--accent-blue);
+        }
+
+        .blog-card:hover .read-more .arrow {
             transform: translateX(5px);
         }
         
         /* --- Featured In Ticker Section --- */
         .featured-section {
-            padding: 2rem 0;
-            border-bottom: 1px solid transparent;
-            border-image: var(--gradient);
-            border-image-slice: 1;
+            padding: 4rem 0;
+            background-color: var(--background-page);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .featured-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: left;
+            font-size: 1.5rem;
+            color: var(--secondary-gray);
+            text-align: center;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
         }
         
         @keyframes ticker-scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
 
         .ticker-wrap {
             width: 100%;
             overflow: hidden;
-            padding-top: 2rem;
-            border-top: 1px solid transparent;
-            border-image: var(--gradient);
-            border-image-slice: 1;
+            padding: 1rem 0;
         }
 
         .ticker-wrap .ticker {
             display: flex;
-            width: fit-content; /* Let the content define the width */
-            animation: ticker-scroll 40s linear infinite;
-
-            height: var(--height);
-            line-height: var(--height);
-            white-space: nowrap;
-            padding-right: 100%;
+            width: fit-content;
+            animation: ticker-scroll 35s linear infinite;
         }
 
         .ticker-wrap:hover .ticker {
@@ -573,184 +865,188 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0 8rem; /* Spacing between logos */
+            padding: 0 5rem; 
             flex-shrink: 0;
         }
         
         .ticker-item img {
-            height: 50px;
-            filter: grayscale(100%);
-            opacity: 0.6;
+            height: 45px;
+            filter: grayscale(100%) opacity(0.5);
             transition: all 0.3s ease;
         }
 
         .ticker-item:hover img {
-            transform: scale(1.1);
-            opacity: 0.9;
+            filter: grayscale(0%) opacity(1);
+            transform: scale(1.05);
         }
         
         /* --- CTA Section --- */
-        .cta-section {
+        .cta-wrapper {
+            background-color: var(--background-light);
             padding: 6rem 2rem;
-            /*background-color: var(--primary-dark);*/
-            background-image: linear-gradient(to right, var(--accent-yellow), var(--accent-blue));
-            color: var(--background-light);
+        }
+
+        .cta-section {
+            background-image: linear-gradient(135deg, var(--accent-yellow), var(--accent-blue));
+            color: var(--primary-dark);
             text-align: center;
-            border-radius: 16px;
-            margin: 8rem auto;
+            border-radius: var(--radius-lg);
+            padding: 5rem 2rem;
             max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-lg);
         }
         
         .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-dark);
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
         }
         
         .cta-section p {
-            font-size: 1.1rem;
-            color: var(--primary-dark);
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
+            font-size: 1.25rem;
+            max-width: 650px;
+            margin: 0 auto 3rem;
+            font-weight: 500;
         }
         
         .cta-section .cta-button {
-            background: var(--background-light);
-            color: var(--primary-dark);
+            background: var(--primary-dark);
+            color: var(--background-light);
+            border-color: var(--primary-dark);
+            padding: 1.25rem 2.5rem;
+            font-size: 1.15rem;
         }
         
         .cta-section .cta-button:hover {
-            background: var(--accent-blue);
-            color: var(--background-light);
+            background: var(--background-light);
+            color: var(--primary-dark);
+            border-color: var(--background-light);
         }
-
 
         /* --- Footer --- */
         .main-footer {
             padding: 1rem 0;
             text-align: center;
-            background-color: #f9f9f9;
+            background-color: var(--primary-dark);
+            color: var(--background-light);
         }
 
         .main-footer p {
-            color: var(--secondary-gray);
-            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
         }
         
         /* --- Responsive Design --- */
-        @media (max-width: 992px) {
+        @media (max-width: 1024px) {
+            .desktop-nav-links {
+                display: none;
+            }
+            .hamburger-menu {
+                display: flex;
+            }
             .hero-grid {
                 grid-template-columns: 1fr;
-                gap: 3rem;
+                gap: 0;
             }
             .hero-content {
+                padding: 6rem 0 4rem;
                 text-align: center;
-                order: 2; /* 2. Make text appear first */
-                padding: 12rem 0 0; /* Adjust padding */
+                order: 2;
             }
             .hero h1 {
                 margin: 0 auto;
+                font-size: 3.5rem;
             }
             .hero p {
                 margin: 1.5rem auto 2.5rem;
-                text-align: left;
             }
             .hero-video-wrapper {
-                order: 1; /* Video on top on mobile */
+                order: 1;
+                position: relative;
                 width: 100%;
-                height: 300px;
-                right: 0px;
-                margin: 0 auto;
+                height: 400px;
                 clip-path: none;
+                border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+            }
+            .hero-background-image {
+                height: 80%;
+                margin-top: 5rem;
             }
 
-            .hero-background-image {
-                height: 70%;
-                margin: 7rem 0 0 0;
-            }
-            
             .numbered-grid {
                 grid-template-columns: 1fr;
+                gap: 3rem;
                 text-align: center;
             }
-            .section-number-wrapper {
-                margin-bottom: 2rem;
-            }
+
             .section-number {
                 position: static;
                 transform: none;
                 display: block;
                 font-size: 6rem;
                 text-align: left;
+                margin-bottom: 1rem;
+                color: var(--border-color);
             }
-            .section-title-numbered {
-                 padding-left: 0;
-                 text-align: left;
+
+            .section-title-wrapper {
+                padding-left: 0;
+                text-align: left;
             }
+
             .section-content p {
+                padding-left: 0;
                 text-align: left;
             }
-
-            .video-caption {
-                text-align: left;
-            }
-            .updates-section h2 {
-                text-align: left;
-            }
-
-            .featured-section h2 {
-                text-align: left;
-            }
-
-            .cta-section {
-                border-radius: 0px;
+            .blog-grid li {
+                flex: 0 0 calc(50% - 1.25rem); /* Show 2 cards on tablet */
             }
         }
         
         @media (max-width: 768px) {
-            .hero {
-                text-align: center;
-            }
-
-            .hero-content {
-                text-align: left;
-            }
-
-            .hero h1 {
-                font-size: 3rem;
-                margin: 0 auto;
-                text-align: left;
-            }
-            .hero p {
-                margin: 1.5rem auto 2.5rem;
-            }
-            .hero-background-image {
-                width: 200%; /* Adjust for mobile */
-            }
-            .numbered-section {
-                padding: 5rem 0;
-            }
-            .numbered-section-bg {
-                padding: 5rem 0;
-            }
-            .updates-list li a {
-                grid-template-columns: 1fr;
-                gap: 0.5rem;
-                text-align: left;
-            }
-            .update-date {
-                margin-bottom: 0.5rem;
-            }
-            .update-arrow {
+            .desktop-nav-links {
                 display: none;
             }
+            .hamburger-menu {
+                display: flex;
+            }
+            .hero h1 {
+                font-size: 2.75rem;
+            }
+            .hero-video-wrapper {
+                height: 300px;
+            }
+            .section-title-wrapper h2 {
+                font-size: 2.25rem;
+            }
+            .team-header h2, .updates-header h2, .cta-section h2 {
+                font-size: 2.25rem;
+            }
+            .updates-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+            .carousel-controls {
+                align-self: flex-end; /* Push arrows to the right on mobile */
+            }
+            .blog-grid li {
+                flex: 0 0 100%; /* Show 1 card on mobile */
+            }
             .cta-section {
-                margin: 5rem auto;
-                border-radius: 0px;
+                padding: 4rem 1.5rem;
+            }
+            .video-caption {
                 text-align: left;
             }
+            .ticker-item {
+                padding: 0 3rem;
+            }
+            .sidebar-nav {
+                width: 300px;
+            }
         }
-
     </style>
 </head>
 <body>
@@ -760,9 +1056,14 @@
         <div class="main-container">
             <nav class="main-nav">
                 <a href="#" class="logo">
-                    <!-- Make sure 'LNK Energies.png' is in the same folder as this HTML file -->
-                    <img src="assets/logo/LNK Energies.svg" alt="LNK Energies Logo">
+                    <img src="assets/logo/LNK Energies.svg" alt="LNK Energies Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x50/0f172a/ffffff?text=LNK+Energies'">
                 </a>
+                <ul class="desktop-nav-links">
+                    <li><a href="#section-1">Our Technology</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#updates">News</a></li>
+                    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+                </ul>
                 <div class="hamburger-menu">
                     <div class="bar"></div>
                     <div class="bar"></div>
@@ -777,167 +1078,301 @@
     <div class="sidebar-nav">
         <div class="close-btn">&times;</div>
         <ul class="sidebar-nav-links">
-            <li><a href="#section-1">+ The Problem</a></li>
-            <li><a href="#section-2">+ The Solution</a></li>
-            <li><a href= "#section-3">+ The Key</a></li>
-            <li><a href="#updates">Updates</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#section-1">Our Technology</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#updates">News</a></li>
+            <li><a href="#contact">Contact Us</a></li>
         </ul>
     </div>
 
-
-    <!-- Hero Section -->
     <main>
+        <!-- Hero Section -->
         <section class="hero">
-            <img src="assets/images/welcome-hero/Energy Waveform.png" alt="Energy Waveform" class="hero-background-image">
             <div class="hero-grid">
-                <div class="hero-container">
-                    <div class="hero-content">
-                        <h1>We make hydrogen <span class="highlight">better</span></h1>
-                        <p>
-                            Our solution unlocks a new way to move and use hydrogen—safely, affordably, and at scale. At LNK Energies, we help power the future without compromising on performance or cost.
-                        </p>
-                        <a href="mailto:hello@lnkenergies.com" class="cta-button">Contact Us</a>
-                    </div>
+                <div class="hero-content">
+                    <h1>We make diesel <span class="highlight">obsolete.</span></h1>
+                    <p>
+                        We are on a mission to redefine the energy landscape today by providing clean and affordable heavy-duty power.
+                    </p>
+                    <a href="mailto:hello@lnkenergies.com" class="cta-button">Partner With Us</a>
                 </div>
                 <div class="hero-video-wrapper">
-                    <video src="assets/video/Website Transportation Video.mp4" autoplay loop muted playsinline class="hero-truck-video" poster="assets/images/welcome-hero/Website Video First Frame.png"></video>
+                    <!-- Added a poster placeholder just in case the video is missing -->
+                    <video src="assets/video/Website Transportation Video.mp4" autoplay loop muted playsinline class="hero-truck-video" poster="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=80"></video>
                 </div>
             </div>
         </section>
 
-        <!-- Numbered Section 01 -->
-        <section class="numbered-section" id="section-1">
-            <div class="container">
-                <div class="numbered-grid">
-                    <div class="section-number-wrapper">
-                        <span class="section-number">01</span>
-                        <div class="section-title-numbered">
-                            <h1>The Problem</h1>
-                            <h2>Hydrogen has not worked</h2>
-                        </div>
-                        <div class="section-content">
-                            <p>Current hydrogen solutions rely on building out entirely new hydrogen infrastructure, which is costly, complex, and slow. The challenge isn’t hydrogen itself—it’s getting it where it needs to go, efficiently and affordably. Until that’s solved, adoption will remain out of reach for most real-world applications.</p>
-                        </div>
+        <!-- NEW: Emissions Stats Section -->
+        <section class="emissions-stats" id="impact">
+            <p class="emissions-summary">
+                The world runs on cheap petrochemical fuels.
+            </p>
+            <div class="stats-grid">
+                <!-- Energy Stat -->
+                <div class="stat-item">
+                    <div class="stat-icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17h4V5H2v12h3"/><path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5"/><path d="M14 17h1"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
                     </div>
-                    <div class="media-carousel">
-                        <div class="videos-container">
-                            <video src="assets/video/Hydrogen.mp4" autoplay loop muted playsinline class="section-video active" data-video="1"></video>
-                        </div>
-                        <div class="video-toggles">
-                            <div class="video-toggle active" data-toggle="1">
-                                <h4>Hydrogen</h4>
+                    <h3>95%</h3>
+                    <p>of global transportation is <br>powered by fossil fuels</p>
+                </div>
+                    
+                <!-- Fuel Stat -->
+                <div class="stat-item">
+                    <div class="stat-icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="15" y2="22"></line><line x1="4" y1="9" x2="14" y2="9"></line><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"></path><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5"></path></svg>
+                    </div>
+                    <h3>60B</h3>
+                    <p>gal of diesel is <br>consumed for transportation</p>
+                </div>
+
+                <!-- Emission Stat -->
+                <div class="stat-item">
+                    <div class="stat-icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path><path d="M17 18h1"></path><path d="M12 18h1"></path><path d="M7 18h1"></path></svg>
+                    </div>
+                    <h3>>2GT</h3>
+                    <p>of CO₂ / year <br>comes from transportation</p>
+                </div>
+            </div> 
+            <p class="emissions-summary">
+                Heavy-duty transportation is notoriosly hard to decarbonize due to it's reliance on energy-dense and cheap liquid fuels. <br> We are here to change that.
+            </p>
+        </section>
+
+        <!-- NARRATIVE FLOW: Problem -> Solution -> Technology -->
+        <div class="narrative-wrapper">
+            <!-- Numbered Section 01: Our Fuel -->
+            <section class="numbered-section" id="section-1">
+                <div class="container">
+                    <div class="numbered-grid">
+                        <div class="section-text-area">
+                            <span class="section-number">01</span>
+                            <div class="section-title-wrapper">
+                                <span class="section-tag">The Fuel</span>
+                                <h2>Liquid Organic Hydrogen Carriers</h2>
+                            </div>
+                            <div class="section-content">
+                                <p>LOHCs chemically store hydrogen power in a stable liquid oil. It's non-flammable, easy to handle, and compatible with existing diesel infrastructure.</p>
                             </div>
                         </div>
-                        <div class="video-captions">
-                            <p class="video-caption active" data-caption="1">Today, hydrogen must be stored as a cryogenic liquid or compressed gas—making it expensive to move and handle.</p>
+                        <div class="media-carousel">
+                            <div class="videos-container">
+                                <video src="assets/video/Pipeline.mp4" autoplay loop muted playsinline class="section-video active" data-video="1"></video>
+                            </div>
+                            <div class="video-toggles">
+                                <div class="video-toggle active" data-toggle="1">
+                                    <h4>Pipeline Transportation</h4>
+                                </div>
+                            </div>
+                            <div class="video-captions">
+                                <p class="video-caption active" data-caption="1">LOHCs can tap into the U.S.' extensive fuel distribution network. This includes more than 60,000 mi of fuel pipelines and 100,000 gas stations today.</p>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Numbered Section 02: Our Technology -->
+            <section class="numbered-section" id="section-2">
+                <div class="container">
+                    <div class="numbered-grid">
+                        <div class="section-text-area">
+                            <span class="section-number">02</span>
+                            <div class="section-title-wrapper">
+                                <span class="section-tag">The Key</span>
+                                <h2>Our breakthrough technology</h2>
+                            </div>
+                            <div class="section-content">
+                                <p>Our Hydrogen Release Unit (HRU) is the key to using LOHC as a fuel. Our MIT-patented technology efficiently extracts hydrogen from LOHC safely and efficiently.</p>
+                            </div>
+                        </div>
+                        <div class="media-carousel">
+                            <div class="videos-container">
+                                <video src="assets/video/Our Technology.mp4" autoplay loop muted playsinline class="section-video active" data-video="1" poster="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80"></video>
+                            </div>
+                            <div class="video-toggles">
+                                <div class="video-toggle active" data-toggle="1">
+                                    <h4>Hydrogen Release Unit (HRU)</h4>
+                                </div>
+                            </div>
+                            <div class="video-captions">
+                                <p class="video-caption active" data-caption="1">LOHC enters our HRU, where hydrogen is extracted on demand. The hydrogen can then power an engine or fuel cell, while the used liquid is sent back to the tank.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Numbered Section 03: Our Technology -->
+            <section class="numbered-section" id="section-3">
+                <div class="container">
+                    <div class="numbered-grid">
+                        <div class="section-text-area">
+                            <span class="section-number">03</span>
+                            <div class="section-title-wrapper">
+                                <span class="section-tag">Net Zero</span>
+                                <h2>Decarbonize > 1 GT CO<sub>2</sub></h2>
+                            </div>
+                            <div class="section-content">
+                                <p>We are tackling all industries that have been reliant on cheap petrochemical fuels and are notoriosly hard to decarbonize. Whether in trucks, ships, or trains, our technology enables a practical and cost-effective path to zero emissions.</p>
+                            </div>
+                        </div>
+                        <div class="media-carousel">
+                            <div class="videos-container">
+                                <video src="assets/video/Engine Power.mp4" autoplay loop muted playsinline class="section-video active" data-video="1"></video>
+                            </div>
+                            <div class="video-toggles">
+                                <div class="video-toggle active" data-toggle="1">
+                                    <h4>Transportation</h4>
+                                </div>
+                            </div>
+                            <div class="video-captions">
+                                <p class="video-caption active" data-caption="1">We are a true drop-in solution for heavy-duty transportation. We provide the same power, range, and cost to be competitive with diesel today.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- NEW: The Team Section -->
+        <section class="team-section" id="team">
+            <div class="container">
+                <div class="team-header">
+                    <h2>Meet The Team</h2>
+                    <p>We’re a team of MIT engineers who built our first prototype in the lab and are now scaling it for real-world deployment. Our mission is to commercialize breakthrough energy technology that makes clean, heavy-duty power practical and affordable.</p>
+                </div>
+                
+                <div class="team-grid">
+                    <!-- Team Member 1 -->
+                    <div class="team-card">
+                        <a  href="https://www.linkedin.com/in/sayandeep-biswas-71073614b/" style="text-decoration: none;">
+                            <div class="team-image">
+                                <!-- Placeholder images used for the team, replace with actual team photos -->
+                                <img src="/assets/images/clients/Sayandeep.png" alt="Sayandeep Biswas">
+                            </div>
+                            <h3>Sayandeep Biswas</h3>
+                            <p class="role">Chief Executive Officer</p>
+                        </a>
+                    </div>
+                    
+                    <!-- Team Member 2 -->
+                    <div class="team-card">
+                        <a  href="https://www.linkedin.com/in/alexis-huynh-1514841b7/" style="text-decoration: none;">
+                            <div class="team-image">
+                                <img src="/assets/images/clients/Alexis.png" alt="Alexis Huynh">
+                            </div>
+                            <h3>Alexis Huynh</h3>
+                            <p class="role">Chief Technology Officer</p>
+                        </a>
+                    </div>
+
+                    <!-- Team Member 3 -->
+                    <div class="team-card">
+                        <a  href="https://www.linkedin.com/in/william-green-63a9a218/" style="text-decoration: none;">
+                            <div class="team-image">
+                                <img src="/assets/images/clients/Bill.png" alt="William Green">
+                            </div>
+                            <h3>Prof. William Green</h3>
+                            <p class="role">Advisor & Director MITEI</p>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Numbered Section 02 -->
-        <section class="numbered-section" id="section-2">
-            <div class="container">
-                <div class="numbered-grid">
-                    <div class="section-number-wrapper">
-                        <span class="section-number">02</span>
-                        <div class="section-title-numbered">
-                            <h1>The Solution</h1>
-                            <h2>A safer, easier hydrogen fuel</h2>
-                        </div>
-                        <div class="section-content">
-                            <p>We use Liquid Organic Hydrogen Carriers (LOHCs) that safely locks hydrogen into a stable, room-temperature liquid. It's non-flammable, easy to handle, and compatible with existing diesel infrastructure—making hydrogen as practical and cost-effective as today’s fuels.</p>
-                        </div>
-                    </div>
-                    <div class="media-carousel">
-                        <div class="videos-container">
-                            <video src="assets/video/Hydrogenation.mp4" autoplay loop muted playsinline class="section-video active" data-video="1"></video>
-                            <video src="assets/video/Pipeline.mp4" autoplay loop muted playsinline class="section-video" data-video="2"></video>
-                        </div>
-                        <div class="video-toggles">
-                            <div class="video-toggle active" data-toggle="1">
-                                <h4>Hydrogenation</h4>
-                            </div>
-                            <div class="video-toggle" data-toggle="2">
-                                <h4>Transportation</h4>
-                            </div>
-                        </div>
-                        <div class="video-captions">
-                            <p class="video-caption active" data-caption="1">LOHCs are organic molecules that can be reversibly hydrogenated and dehydrogenated to store and release hydrogen.</p>
-                            <p class="video-caption" data-caption="2">Because LOHCs have similar physical properties to diesel, they can be transported with existing diesel infrastructure including pipelines and pumps.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-                <!-- Numbered Section 03 -->
-        <section class="numbered-section" id="section-3">
-            <div class="container">
-                <div class="numbered-grid">
-                    <div class="section-number-wrapper">
-                        <span class="section-number">03</span>
-                        <div class="section-title-numbered">
-                            <h1>The Key</h1>
-                            <h2>Our technology</h2>
-                        </div>
-                        <div class="section-content">
-                            <p>Our Hydrogen Release Unit (HRU) is the key to extracting hydrogen from LOHCs—safely and efficiently, right on board. Whether in a truck, ship, or other heavy-duty platform, our technology enables a practical and cost-effective path to zero emissions.</p>
-                        </div>
-                    </div>
-                    <div class="media-carousel" style="min-height:465px">
-                        <div class="videos-container">
-                            <video src="assets/video/Our Technology.mp4" autoplay loop muted playsinline class="section-video active" data-video="1"></video>
-                            <video src="assets/video/Engine Power.mp4" autoplay loop muted playsinline class="section-video" data-video="2"></video>
-                            <video src="assets/video/Fuel Cell.mp4" autoplay loop muted playsinline class="section-video" data-video="3"></video>
-                        </div>
-                        <div class="video-toggles">
-                            <div class="video-toggle active" data-toggle="1">
-                                <h4>HRU</h4>
-                            </div>
-                            <div class="video-toggle" data-toggle="2">
-                                <h4>Engine</h4>
-                            </div>
-                            <div class="video-toggle" data-toggle="3">
-                                <h4>Fuel Cell</h4>
-                            </div>
-                        </div>
-                        <div class="video-captions">
-                            <p class="video-caption active" data-caption="1">Hydrogen-rich LOHC enters our Hydrogen Release Unit, where hydrogen is extracted on demand. The hydrogen can then power an engine or fuel cell, while the used liquid is sent back to the tank—ready to be reused.</p>
-                            <p class="video-caption" data-caption="2">We can extract hydrogen at optimal pressures and flow rates to power a hydrogen internal combustion engine.</p>
-                            <p class="video-caption" data-caption="3">We can extract hydrogen to power a hydrogen fuel cell for complete electric operation.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Recent Updates Section -->
+        <!-- UPDATED: Square Blog / Recent Updates Section -->
         <section class="updates-section" id="updates">
             <div class="container">
-                <h2>Recent Updates</h2>
-                <ul class="updates-list">
+                <div class="updates-header">
+                    <h2>Recent Updates</h2>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn prev-btn" aria-label="Previous update">&larr;</button>
+                        <button class="carousel-btn next-btn" aria-label="Next update">&rarr;</button>
+                    </div>
+                </div>
+                
+                <ul class="blog-grid">
+                    <!-- Blog Card 1 -->
                     <li>
-                        <a href="https://protoventures.mit.edu/hyrdrogen-fellows/" target="_blank" rel="noopener noreferrer">
-                            <span class="update-date">Feb 28, 2025</span>
-                            <span class="update-title">MIT Proto Ventures’ New Fellows Are Reducing Carbon Emissions For Long-Haul Trucks</span>
-                            <span class="update-arrow">&rarr;</span>
-                        </a>
+                        <article class="blog-card">
+                            <a href="https://mitsloan.mit.edu/ideas-made-to-matter/22-mit-startups-to-watch-2025" target="_blank" rel="noopener noreferrer">
+                                <div class="blog-image-wrapper">
+                                    <img src="/assets/images/blog/22_startups_to_watch.png" alt="22 Startups To Watch">
+                                </div>
+                                <div class="blog-content">
+                                    <span class="update-date">Sep 9, 2025</span>
+                                    <h3 class="update-title">22 MIT Startups to Watch in 2025</h3>
+                                    <span class="read-more">Read Article <span class="arrow">&rarr;</span></span>
+                                </div>
+                            </a>
+                        </article>
                     </li>
+
+                    <!-- Blog Card 2 -->
                     <li>
-                        <a href="https://news.mit.edu/2023/harnessing-hydrogens-potential-address-long-haul-trucking-emissions-0907" target="_blank" rel="noopener noreferrer">
-                            <span class="update-date">Sep 7, 2023</span>
-                            <span class="update-title">Harnessing hydrogen’s potential to address long-haul trucking emissions</span>
-                            <span class="update-arrow">&rarr;</span>
-                        </a>
+                        <article class="blog-card">
+                            <a href="https://vimeo.com/1116885287" target="_blank" rel="noopener noreferrer">
+                                <div class="blog-image-wrapper">
+                                    <img src="/assets/images/blog/Demo_Day.jpg" alt="Demo Day">
+                                </div>
+                                <div class="blog-content">
+                                    <span class="update-date">Sep 8, 2025</span>
+                                    <h3 class="update-title">LNK Energies Pitch at MIT Delta v Demo Day</h3>
+                                    <span class="read-more">Read Article <span class="arrow">&rarr;</span></span>
+                                </div>
+                            </a>
+                        </article>
                     </li>
+
+                    <!-- Blog Card 3 -->
                     <li>
-                        <a href="https://pubs.acs.org/doi/10.1021/acs.energyfuels.3c01919" target="_blank" rel="noopener noreferrer">
-                            <span class="update-date">Aug 9, 2023</span>
-                            <span class="update-title">Perspective on Decarbonizing Long-Haul Trucks Using Onboard Dehydrogenation of Liquid Organic Hydrogen Carriers</span>
-                            <span class="update-arrow">&rarr;</span>
-                        </a>
+                        <article class="blog-card">
+                            <a href="https://protoventures.mit.edu/hyrdrogen-fellows/" target="_blank" rel="noopener noreferrer">
+                                <div class="blog-image-wrapper">
+                                    <img src="/assets/images/blog/ProtoVentures_Article.jpeg" alt="Truck driving on highway">
+                                </div>
+                                <div class="blog-content">
+                                    <span class="update-date">Feb 28, 2025</span>
+                                    <h3 class="update-title">MIT Proto Ventures’ New Fellows Are Reducing Carbon Emissions For Long-Haul Trucks</h3>
+                                    <span class="read-more">Read Article <span class="arrow">&rarr;</span></span>
+                                </div>
+                            </a>
+                        </article>
+                    </li>
+                    
+                    <!-- Blog Card 4 -->
+                    <li>
+                        <article class="blog-card">
+                            <a href="https://news.mit.edu/2023/harnessing-hydrogens-potential-address-long-haul-trucking-emissions-0907" target="_blank" rel="noopener noreferrer">
+                                <div class="blog-image-wrapper">
+                                    <img src="/assets/images/blog/MIT_News_Cover.jpg" alt="Hydrogen Energy concept">
+                                </div>
+                                <div class="blog-content">
+                                    <span class="update-date">Sep 7, 2023</span>
+                                    <h3 class="update-title">Harnessing hydrogen’s potential to address long-haul trucking emissions</h3>
+                                    <span class="read-more">Read Article <span class="arrow">&rarr;</span></span>
+                                </div>
+                            </a>
+                        </article>
+                    </li>
+                    
+                    <!-- Blog Card 5 -->
+                    <li>
+                        <article class="blog-card">
+                            <a href="https://pubs.acs.org/doi/10.1021/acs.energyfuels.3c01919" target="_blank" rel="noopener noreferrer">
+                                <div class="blog-image-wrapper">
+                                    <img src="/assets//images//blog/LOHC_paper.jpg" alt="Laboratory testing equipment">
+                                </div>
+                                <div class="blog-content">
+                                    <span class="update-date">Aug 9, 2023</span>
+                                    <h3 class="update-title">Perspective on Decarbonizing Long-Haul Trucks Using Onboard Dehydrogenation</h3>
+                                    <span class="read-more">Read Article <span class="arrow">&rarr;</span></span>
+                                </div>
+                            </a>
+                        </article>
                     </li>
                 </ul>
             </div>
@@ -951,24 +1386,22 @@
             <div class="ticker-wrap">
                 <div class="ticker">
                     <!-- List logos twice for a seamless loop -->
-                    <div class="ticker-item"><a href="https://news.mit.edu/2023/harnessing-hydrogens-potential-address-long-haul-trucking-emissions-0907" target="_blank" rel="noopener noreferrer">
-                        <img src="assets/images/icons/MIT_News_Logo.png" alt="MIT News"></a></div>
-                    <div class="ticker-item"><a href="https://protoventures.mit.edu/hyrdrogen-fellows/" target="_blank" rel="noopener noreferrer">
-                        <img src="assets/images/icons/ProtoVentures.png" alt="ProtoVentures Fellowship"></a></div>
-                    <div class="ticker-item">
-                        <img src="assets/images/icons/MIT DeltaV.png" alt="DeltaV"></div>
-                    <div class="ticker-item"><a href="https://776.org/fellows" target="_blank" rel="noopener noreferrer">
-                        <img src="assets/images/icons/776 Fellowship.png" alt="776 Fellowship"></a></div>
+                    <div class="ticker-item"><a href="#" target="_blank" rel="noopener noreferrer"><img src="/assets//images//icons/MIT_News_Logo.png" alt="MIT News"></a></div>
+                    <div class="ticker-item"><a href="#" target="_blank" rel="noopener noreferrer"><img src="/assets//images//icons/ProtoVentures.png" alt="ProtoVentures Fellowship"></a></div>
+                    <div class="ticker-item"><img src="/assets/images/icons/MIT DeltaV.png" alt="DeltaV"></div>
+                    <div class="ticker-item"><a href="#" target="_blank" rel="noopener noreferrer"><img src="/assets//images//icons/776 Fellowship.png" alt="776 Fellowship"></a></div>
                 </div>
             </div>
         </section>
         
         <!-- CTA Section -->
-        <section class="cta-section" id="contact">
-            <h2>Interested in the future of hydrogen?</h2>
-            <p>We're looking for partners, investors, and early adopters to join us on our mission to decarbonize the heavy-duty industry. Let's talk.</p>
-            <a href="mailto:hello@lnkenergies.com" class="cta-button">Contact Us</a>
-        </section>
+        <div class="cta-wrapper">
+            <section class="cta-section" id="contact">
+                <h2>Interested in the future of energy?</h2>
+                <p>We're looking for partners, investors, and early adopters to join us on our mission to decarbonize the heavy-duty industry. Let's talk.</p>
+                <a href="mailto:hello@lnkenergies.com" class="cta-button">Get in Touch</a>
+            </section>
+        </div>
         
     </main>
 
@@ -1043,6 +1476,28 @@
                 });
             });
         });
+
+        // --- Blog Carousel Script ---
+        const blogGrid = document.querySelector('.blog-grid');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+
+        if (blogGrid && prevBtn && nextBtn) {
+            // Calculate how far to scroll (width of one card + gap)
+            const getScrollDistance = () => {
+                const card = blogGrid.querySelector('li');
+                const gap = parseFloat(getComputedStyle(blogGrid).gap) || 0;
+                return card.offsetWidth + gap;
+            };
+
+            nextBtn.addEventListener('click', () => {
+                blogGrid.scrollBy({ left: getScrollDistance(), behavior: 'smooth' });
+            });
+
+            prevBtn.addEventListener('click', () => {
+                blogGrid.scrollBy({ left: -getScrollDistance(), behavior: 'smooth' });
+            });
+        }
     </script>
 
 </body>
