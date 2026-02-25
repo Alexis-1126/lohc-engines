@@ -879,6 +879,63 @@
             filter: grayscale(0%) opacity(1);
             transform: scale(1.05);
         }
+
+        /* --- Hiring Section --- */
+        .hiring-section {
+            padding: 8rem 0;
+            background-color: var(--background-light);
+        }
+
+        .hiring-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+
+        .hiring-list {
+            list-style: none;
+            margin: 0 auto;
+        }
+
+        .hiring-list li a {
+            display: grid;
+            grid-template-columns: 150px 1fr auto;
+            gap: 1.5rem;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            text-decoration: none;
+            color: var(--primary-dark);
+            transition: background-color 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .hiring-list li:first-child {
+            border-top: 1px solid var(--border-color);
+        }
+
+        .hiring-list li a:hover {
+            background-color: #f9f9f9;
+        }
+
+        .hiring-date {
+            color: var(--secondary-gray);
+            font-weight: 500;
+        }
+
+        .hiring-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .hiring-arrow {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .hiring-list li a:hover .hiring-arrow {
+            transform: translateX(5px);
+        }
         
         /* --- CTA Section --- */
         .cta-wrapper {
@@ -1002,6 +1059,9 @@
             .blog-grid li {
                 flex: 0 0 calc(50% - 1.25rem); /* Show 2 cards on tablet */
             }
+            .hiring-section h2 {
+                text-align: left;
+            }
         }
         
         @media (max-width: 768px) {
@@ -1046,6 +1106,17 @@
             .sidebar-nav {
                 width: 300px;
             }
+            .hiring-list li a {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+                text-align: left;
+            }
+            .hiring-date {
+                margin-bottom: 0.5rem;
+            }
+            .hiring-arrow {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -1062,6 +1133,7 @@
                     <li><a href="#section-1">Our Technology</a></li>
                     <li><a href="#team">Team</a></li>
                     <li><a href="#updates">News</a></li>
+                    <li><a href="#hiring">Careers</a></li>
                     <li><a href="#contact" class="nav-cta">Contact Us</a></li>
                 </ul>
                 <div class="hamburger-menu">
@@ -1081,6 +1153,7 @@
             <li><a href="#section-1">Our Technology</a></li>
             <li><a href="#team">Team</a></li>
             <li><a href="#updates">News</a></li>
+            <li><a href="#hiring">Careers</a></li>
             <li><a href="#contact">Contact Us</a></li>
         </ul>
     </div>
@@ -1391,6 +1464,36 @@
                     <div class="ticker-item"><img src="/assets/images/icons/MIT DeltaV.png" alt="DeltaV"></div>
                     <div class="ticker-item"><a href="#" target="_blank" rel="noopener noreferrer"><img src="/assets//images//icons/776 Fellowship.png" alt="776 Fellowship"></a></div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Hiring Section -->
+        <section class="hiring-section" id="hiring">
+            <div class="container">
+                <h2>Careers</h2>
+                <ul class="hiring-list">
+                    <li>
+                        <a href="https://www.indeed.com/job/technical-project-manager-8f1066915dcad278" target="_blank" rel="noopener noreferrer">
+                            <span class="hiring-date">Full-time</span>
+                            <span class="hiring-title">Technical Project Manager</span>
+                            <span class="hiring-arrow">&rarr;</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.indeed.com/job/electrical-engineer-8351f7c1256eb0e3" target="_blank" rel="noopener noreferrer">
+                            <span class="hiring-date">Full-time</span>
+                            <span class="hiring-title">Electrical Engineer</span>
+                            <span class="hiring-arrow">&rarr;</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://app.joinhandshake.com/public/jobs/10780872?utm_source=web&utm_campaign=job_share&utm_medium=copy_link&utm_content=emp-copy_link-job_page" target="_blank" rel="noopener noreferrer">
+                            <span class="hiring-date">Full-time</span>
+                            <span class="hiring-title">Chemical Engineer</span>
+                            <span class="hiring-arrow">&rarr;</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </section>
         
